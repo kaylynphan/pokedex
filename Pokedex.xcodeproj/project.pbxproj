@@ -121,12 +121,14 @@
 		2EA4346128FA32A700720BB5 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
+				2EA4349A28FA363800720BB5 /* Managers */,
+				2EA4349928FA363200720BB5 /* Models */,
+				2EA4349828FA361400720BB5 /* Views */,
+				2EA4349728FA35F600720BB5 /* ViewControllers */,
 				2EA4346228FA32A700720BB5 /* AppDelegate.h */,
 				2EA4346328FA32A700720BB5 /* AppDelegate.m */,
 				2EA4346528FA32A700720BB5 /* SceneDelegate.h */,
 				2EA4346628FA32A700720BB5 /* SceneDelegate.m */,
-				2EA4346828FA32A700720BB5 /* ViewController.h */,
-				2EA4346928FA32A700720BB5 /* ViewController.m */,
 				2EA4346B28FA32A700720BB5 /* Main.storyboard */,
 				2EA4346E28FA32A900720BB5 /* Assets.xcassets */,
 				2EA4347028FA32A900720BB5 /* LaunchScreen.storyboard */,
@@ -153,6 +155,36 @@
 			path = PokedexUITests;
 			sourceTree = "<group>";
 		};
+		2EA4349728FA35F600720BB5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2EA4346828FA32A700720BB5 /* ViewController.h */,
+				2EA4346928FA32A700720BB5 /* ViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2EA4349828FA361400720BB5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2EA4349928FA363200720BB5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2EA4349A28FA363800720BB5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		F5997037AE97ED89B6B5A961 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +195,6 @@
 				40F0E41CAF22881BED9F92BE /* Pods-PokedexTests.debug.xcconfig */,
 				8DD11DF0CA7C013BDDC51887 /* Pods-PokedexTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
