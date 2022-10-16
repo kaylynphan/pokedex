@@ -49,6 +49,8 @@
         }
         self.isMoreDataLoading = false;
     }];
+    
+    [self.selectedPokemonNameLabel setText:@""];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -119,7 +121,8 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     PokemonCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"pokemonCollectionViewCell" forIndexPath:indexPath];
     Pokemon *thisPokemon = self.pokemonArray[indexPath.item];
-    [cell.pokemonImageView setImageWithURL:thisPokemon.imageUrl];
+    [cell.pokemonImageView setImageWithURL:thisPokemon.imageUrl placeholderImage:[UIImage imageNamed:@"question"]];
+    //[cell.pokemonImageView setImageWithURL:thisPokemon.imageUrl];
     cell.pokemonNameLabel.text = thisPokemon.name;
     [cell.pokemonNameLabel sizeToFit];
     return cell;
@@ -135,6 +138,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     Pokemon *selectedPokemon = self.pokemonArray[indexPath.item];
     [self.selectedPokemonImageView setImageWithURL:selectedPokemon.imageUrl];
+    [self.selectedPokemonNameLabel setText:[selectedPokemon.name uppercaseString]];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {

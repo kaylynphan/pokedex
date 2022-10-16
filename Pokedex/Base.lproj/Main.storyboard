@@ -40,8 +40,8 @@
                                                         <constraint firstAttribute="width" secondItem="sxE-6X-06i" secondAttribute="height" multiplier="1:1" id="FZD-NI-k0w"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLE-jg-mHd">
-                                                    <rect key="frame" x="90.666666666666671" y="197" width="42.000000000000014" height="11"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLE-jg-mHd">
+                                                    <rect key="frame" x="11" y="187" width="201" height="20.333333333333343"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -49,8 +49,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="sxE-6X-06i" firstAttribute="width" secondItem="hbt-Zg-n98" secondAttribute="width" multiplier="0.7" id="DOv-Po-atM"/>
-                                                <constraint firstItem="RLE-jg-mHd" firstAttribute="top" secondItem="sxE-6X-06i" secondAttribute="bottom" constant="10" id="I2a-fC-65W"/>
+                                                <constraint firstItem="RLE-jg-mHd" firstAttribute="top" secondItem="sxE-6X-06i" secondAttribute="bottom" id="I2a-fC-65W"/>
                                                 <constraint firstItem="sxE-6X-06i" firstAttribute="centerY" secondItem="hbt-Zg-n98" secondAttribute="centerY" id="KOn-en-qhN"/>
+                                                <constraint firstItem="RLE-jg-mHd" firstAttribute="width" secondItem="hbt-Zg-n98" secondAttribute="width" multiplier="0.9" id="U5z-RY-xZQ"/>
                                                 <constraint firstItem="RLE-jg-mHd" firstAttribute="centerX" secondItem="hbt-Zg-n98" secondAttribute="centerX" id="WHj-wZ-fip"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RLE-jg-mHd" secondAttribute="bottom" constant="10" id="ats-9s-5Yz"/>
                                                 <constraint firstItem="sxE-6X-06i" firstAttribute="centerX" secondItem="hbt-Zg-n98" secondAttribute="centerX" id="b7U-ZF-M72"/>
@@ -65,28 +66,38 @@
                                 </cells>
                             </collectionView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n2B-eF-m2M">
-                                <rect key="frame" x="125" y="76" width="140" height="140"/>
+                                <rect key="frame" x="44" y="76" width="140" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="0E3-Q5-4f0"/>
                                     <constraint firstAttribute="width" constant="140" id="yrs-Hv-iWh"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZm-pU-8fI">
+                                <rect key="frame" x="201" y="76" width="149" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="n2B-eF-m2M" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="29" id="3aJ-yS-FzR"/>
+                            <constraint firstItem="uZm-pU-8fI" firstAttribute="leading" secondItem="n2B-eF-m2M" secondAttribute="trailing" constant="17" id="7US-Pa-ih5"/>
                             <constraint firstItem="edq-3Z-cM3" firstAttribute="top" secondItem="n2B-eF-m2M" secondAttribute="bottom" constant="26" id="8dC-MB-f8G"/>
+                            <constraint firstItem="n2B-eF-m2M" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="44" id="NbL-po-Q1A"/>
                             <constraint firstItem="edq-3Z-cM3" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="34" id="TcY-i8-ujT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uZm-pU-8fI" secondAttribute="trailing" constant="40" id="Y7o-Ha-Ugu"/>
                             <constraint firstItem="edq-3Z-cM3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eka-KA-sbN"/>
+                            <constraint firstItem="uZm-pU-8fI" firstAttribute="top" secondItem="n2B-eF-m2M" secondAttribute="top" id="qCJ-6K-OXy"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="edq-3Z-cM3" secondAttribute="trailing" id="rDP-9Z-wQ7"/>
-                            <constraint firstItem="n2B-eF-m2M" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="uc3-hp-Jkf"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="edq-3Z-cM3" id="xLc-vO-HBn"/>
                         <outlet property="flowLayout" destination="Z9u-7g-TSp" id="Gza-mi-HMJ"/>
                         <outlet property="selectedPokemonImageView" destination="n2B-eF-m2M" id="6Ys-hO-BSK"/>
+                        <outlet property="selectedPokemonNameLabel" destination="uZm-pU-8fI" id="XVb-tO-dDg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
