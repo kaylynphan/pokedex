@@ -9,10 +9,15 @@
 #import "PokemonCollectionViewCell.h"
 #import "Pokemon.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import "InfiniteScrollActivityView.h"
 
 @interface HomeViewController ()
 
 @property (nonatomic, strong) NSMutableArray *pokemonArray;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
+@property (assign, nonatomic) NSInteger offset;
+@property (weak, nonatomic) InfiniteScrollActivityView* loadingMoreView;
+
 
 @end
 
@@ -24,11 +29,25 @@
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     
+    self.isMoreDataLoading = false;
+    self.offset = 0;
+    CGRect frame = CGRectMake(0, self.collectionView.contentSize.height, self.collectionView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+    self.loadingMoreView = [[InfiniteScrollActivityView alloc] initWithFrame:frame];
+    self.loadingMoreView.hidden = true;
+    [self.collectionView addSubview:self.loadingMoreView];
+    
+    UIEdgeInsets insets = self.collectionView.contentInset;
+    insets.bottom += InfiniteScrollActivityView.defaultHeight;
+    self.collectionView.contentInset = insets;
+    
     self.pokemonArray = [[NSMutableArray alloc] init];
-    [self fetchPokemon:^(NSArray *pokemonUrlArray, NSError *error) {
+    
+    self.isMoreDataLoading = true;
+    [self fetchPokemonWithOffset:self.offset withCompletion:^(NSArray *pokemonUrlArray, NSError *error) {
         for (NSString *urlString in pokemonUrlArray) {
             [self fetchPokemonDetailsAtURL:[NSURL URLWithString:urlString]];
         }
+        self.isMoreDataLoading = false;
     }];
 }
 
@@ -40,8 +59,9 @@
     self.flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
-- (void)fetchPokemon:(void(^)(NSArray *pokemonUrlArray, NSError *error))completion {
-    NSURL *url = [NSURL URLWithString:@"https://pokeapi.co/api/v2/pokemon?limit=20&offset=0"];
+- (void)fetchPokemonWithOffset:(NSInteger)offset withCompletion:(void(^)(NSArray *pokemonUrlArray, NSError *error))completion {
+    NSString *urlStringWithOffset = [@"https://pokeapi.co/api/v2/pokemon?limit=20&offset=" stringByAppendingString:[@(offset) stringValue]];
+    NSURL *url = [NSURL URLWithString:urlStringWithOffset];
     
     // obtain the number of pokemon
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
@@ -112,9 +132,34 @@
     return CGSizeMake(cellWidth, cellWidth * 1.2);
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     Pokemon *selectedPokemon = self.pokemonArray[indexPath.item];
     [self.selectedPokemonImageView setImageWithURL:selectedPokemon.imageUrl];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.collectionView.contentSize.height;
+        int scrollOffsetThreshold = scrollViewContentHeight - self.collectionView.bounds.size.height;
+        
+        // When the user has scrolled past the threshold, start requesting
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.collectionView.isDragging) {
+            self.isMoreDataLoading = true;
+            CGRect frame = CGRectMake(0, self.collectionView.contentSize.height, self.collectionView.bounds.size.width, InfiniteScrollActivityView.defaultHeight);
+            self.loadingMoreView.frame = frame;
+            [self.loadingMoreView startAnimating];
+            
+            // Load more pokemon
+            self.offset += 20;
+            [self fetchPokemonWithOffset:self.offset withCompletion:^(NSArray *pokemonUrlArray, NSError *error) {
+                for (NSString *urlString in pokemonUrlArray) {
+                    [self fetchPokemonDetailsAtURL:[NSURL URLWithString:urlString]];
+                }
+                self.isMoreDataLoading = false;
+            }];
+        }
+    }
 }
 
 
