@@ -8,7 +8,7 @@ I completed:
 
 - I chose to complete this Pokedex in the way I was most comfortable with. I used Objective-C and Storyboards, and an MVC Pattern.
 - There's a few Pokemon names that consistently don't appear. One of them is 'squirtle', which is a pretty short string, so I don't think it could be an issue of the text being too long for the label. API data is also being printed in the console. Maybe I'll figure this out after thinking about it more.
-- For image caching, I used AFNetworking.
+- For image caching, I used AFNetworking. I used a placeholder image of a question mark while the images are still loading.
 - I can for sure pick this up and work on it more if you would like to see something more completed. This was fun to work on!
 
 - Kaylyn
