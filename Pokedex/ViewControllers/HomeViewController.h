@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *flowLayout;
 @property (weak, nonatomic) IBOutlet UIImageView *selectedPokemonImageView;
 @property (weak, nonatomic) IBOutlet UILabel *selectedPokemonNameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *pokedexLogo;
 
 @end
 
