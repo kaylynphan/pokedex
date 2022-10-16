@@ -18,7 +18,6 @@
 @property (assign, nonatomic) NSInteger offset;
 @property (weak, nonatomic) InfiniteScrollActivityView* loadingMoreView;
 
-
 @end
 
 @implementation HomeViewController
@@ -136,6 +135,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (![self.pokedexLogo isHidden]) {
+        [self.pokedexLogo setHidden:true];
+    }
     Pokemon *selectedPokemon = self.pokemonArray[indexPath.item];
     [self.selectedPokemonImageView setImageWithURL:selectedPokemon.imageUrl];
     [self.selectedPokemonNameLabel setText:[selectedPokemon.name uppercaseString]];
